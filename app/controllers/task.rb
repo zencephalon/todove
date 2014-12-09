@@ -28,3 +28,9 @@ put '/task/:id' do |id|
   task.update(params[:task])
   redirect ("/task/#{task.id}")
 end
+
+delete '/task/:id' do |id|
+  task = Task.find(id)
+  task.destroy
+  redirect "/tasks/all"
+end
