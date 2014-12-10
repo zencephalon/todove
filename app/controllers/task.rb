@@ -4,7 +4,9 @@ get '/task/:id' do |id|
 end
 
 get '/tasks/all' do 
-  @tasks = Task.all
+  redirect '/login' unless current_user
+
+  @tasks = current_user.tasks
   erb :'task/all'
 end
 
@@ -13,7 +15,7 @@ get '/tasks/new' do
 end
 
 post '/tasks' do
-  puts params.inspect
+  params[:task][:user_id] = current_user.id
   task = Task.create(params[:task])
   redirect ("/task/#{task.id}")
 end
