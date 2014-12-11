@@ -1,9 +1,9 @@
 <div class="task">
   <p class="description <%= task.completed ? "strikethrough" : "" %>"><%= task.description %></p>
 
-  <form action="/task/<%= task.id %>/complete" method="POST">
+  <form action="/task/<%= task.id %>/toggle_complete" method="POST">
     <input type="hidden" name="_method" value="PUT">
-    <input type="submit" value="Complete">
+    <input type="submit" value="<%= task.completed ? "Uncomplete" : "Complete" %>">
   </form>
 
   <form action="/task/<%= task.id %>" method="POST">

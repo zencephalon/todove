@@ -21,7 +21,7 @@ end
 post '/tasks' do
   params[:task][:user_id] = current_user.id
   task = Task.create(params[:task])
-  redirect ("/task/#{task.id}")
+  redirect ("/")
 end
 
 get '/task/:id/edit' do |id|
@@ -35,10 +35,10 @@ put '/task/:id' do |id|
   redirect ("/task/#{task.id}")
 end
 
-put '/task/:id/complete' do |id|
+put '/task/:id/toggle_complete' do |id|
   task = Task.find(id)
-  task.complete!
-  redirect ("/task/#{task.id}")
+  task.toggle_complete!
+  redirect ("/")
 end
 
 delete '/task/:id' do |id|

@@ -1,8 +1,8 @@
 class Task < ActiveRecord::Base
   belongs_to :user
 
-  def complete!
-    self.completed = true
+  def toggle_complete!
+    self.completed = !self.completed
     self.save
   end
 end
