@@ -1,3 +1,5 @@
 <% @tasks.each do |task| %>
   <%= erb :'task/single', locals: {task: task} %>
 <% end %>
+
+<%= erb :'task/new' %>
