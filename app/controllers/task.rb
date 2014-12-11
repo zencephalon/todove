@@ -1,3 +1,7 @@
+get '/' do
+  redirect '/tasks/all'
+end
+
 get '/task/:id' do |id|
   @task = Task.find(id)
   erb :'task/single', locals: {task: @task}
