@@ -20,8 +20,14 @@ post '/tasks', auth: :user do
   params[:task][:user_id] = current_user.id
   task = Task.new(params[:task])
   
-  set_ar_errors(task) unless task.save
-  redirect ("/")
+  unless task.save
+    set_ar_errors(task) 
+    redirect ("/")
+  end
+
+  task.set_tags_from_str(params[:tags])
+  
+  redirect "/"
 end
 
 get '/task/:id/edit', auth: :user do |id|
@@ -32,6 +38,9 @@ end
 put '/task/:id', auth: :user do |id|
   task = Task.find(id)
   task.update(params[:task])
+
+  task.set_tags_from_str(params[:tags])
+
   redirect ("/task/#{task.id}")
 end
 

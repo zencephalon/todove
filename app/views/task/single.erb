@@ -4,6 +4,9 @@
     <span class="task_<%= task.priority %>"><%= task.priority %></span>.
     <%= task.description %>
   </p>
+  <p>
+    <%= task.display_tags %>
+  </p>
 
   <form action="/task/<%= task.id %>/toggle_complete" method="POST">
     <input type="hidden" name="_method" value="PUT">

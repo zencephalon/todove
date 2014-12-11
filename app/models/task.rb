@@ -10,4 +10,16 @@ class Task < ActiveRecord::Base
     self.completed = !self.completed
     self.save
   end
+
+  def set_tags_from_str(tag_str)
+    self.tags.clear
+    tag_str.split(",").map {|tag| tag.strip}.uniq.each do |tag|
+      t = Tag.find_or_create_by(name: tag)
+      self.tags << t
+    end
+  end
+
+  def display_tags
+    self.tags.map {|t| t.name}.join(", ")
+  end
 end
