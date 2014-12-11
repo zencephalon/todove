@@ -18,7 +18,9 @@ end
 
 post '/tasks', auth: :user do
   params[:task][:user_id] = current_user.id
-  task = Task.create(params[:task])
+  task = Task.new(params[:task])
+  
+  set_ar_errors(task) unless task.save
   redirect ("/")
 end
 

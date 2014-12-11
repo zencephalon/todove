@@ -10,6 +10,7 @@ post '/login' do
     redirect '/'
   else
     # tell the user they suck at logging in
+    set_error("Login failed.")
     redirect '/login'
   end
 end
