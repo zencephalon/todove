@@ -1,7 +1,13 @@
 <div class="task">
-<p class="description"><%= task.description %></p>
-<form action="/task/<%= task.id %>" method="POST">
-<input type="hidden" name="_method" value="DELETE">
-<input type="submit" value="DELETE!">
-</form>
+  <p class="description <%= task.completed ? "strikethrough" : "" %>"><%= task.description %></p>
+
+  <form action="/task/<%= task.id %>/complete" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="submit" value="Complete">
+  </form>
+
+  <form action="/task/<%= task.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+  </form>
 </div>

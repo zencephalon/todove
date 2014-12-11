@@ -35,6 +35,12 @@ put '/task/:id' do |id|
   redirect ("/task/#{task.id}")
 end
 
+put '/task/:id/complete' do |id|
+  task = Task.find(id)
+  task.complete!
+  redirect ("/task/#{task.id}")
+end
+
 delete '/task/:id' do |id|
   task = Task.find(id)
   task.destroy
