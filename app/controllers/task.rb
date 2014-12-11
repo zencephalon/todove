@@ -10,7 +10,7 @@ end
 get '/tasks/all' do 
   redirect '/login' unless current_user
 
-  @tasks = current_user.tasks
+  @tasks = current_user.tasks.sort_by {|t| t.priority}
   erb :'task/all'
 end
 
