@@ -17,4 +17,12 @@
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete">
   </form>
+
+  <ul class="subtasks">
+  <% task.sub_tasks.each do |sub_task| %>
+    <li>
+      <%= erb :'task/single', locals: {task: sub_task} %>
+    </li>
+  <% end %>
+  </ul>
 </div>
