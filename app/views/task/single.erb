@@ -24,5 +24,8 @@
       <%= erb :'task/single', locals: {task: sub_task} %>
     </li>
   <% end %>
+    <li>
+      <%= erb :'task/new', locals: {parent_task_id: task.id} %>
+    </li>
   </ul>
 </div>

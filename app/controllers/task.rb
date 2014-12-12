@@ -13,7 +13,7 @@ get '/tasks/all', auth: :user do
 end
 
 get '/tasks/new', auth: :user do
-  erb :'task/new'
+  erb :'task/new', locals: {parent_task_id: nil}
 end
 
 post '/tasks', auth: :user do

@@ -2,4 +2,4 @@
   <%= erb :'task/single', locals: {task: task} %>
 <% end %>
 
-<%= erb :'task/new' %>
+<%= erb :'task/new', locals: {parent_task_id: nil} %>
