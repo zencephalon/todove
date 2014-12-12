@@ -8,7 +8,7 @@ get '/task/:id', auth: :user do |id|
 end
 
 get '/tasks/all', auth: :user do 
-  @tasks = current_user.tasks.sort_by {|t| t.priority}
+  @tasks = current_user.top_level_tasks.sort_by {|t| t.priority}
   erb :'task/all'
 end
 
