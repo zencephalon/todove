@@ -4,7 +4,7 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-  $('.toggle_form').submit(function (event) {
+  $('#content').on('submit', 'form.toggle_form', function (event) {
     event.preventDefault();
 
     var $target = $(event.target);
