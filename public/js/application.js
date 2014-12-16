@@ -4,7 +4,19 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('#content').on('submit', 'form.delete_form', function (event) {
+    event.preventDefault();
+    var $target = $(event.target);
+    $.ajax({
+      url: $target.attr('action'),
+      type: 'DELETE'
+    }).done(function(response) {
+      $target.closest('.task').remove();
+    });
+  });
+
   $('#content').on('submit', 'form.toggle_form', function (event) {
+
     event.preventDefault();
 
     var $target = $(event.target);
