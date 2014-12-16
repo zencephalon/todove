@@ -58,5 +58,9 @@ end
 delete '/task/:id', auth: :user do |id|
   task = Task.find(id)
   task.destroy
-  redirect "/tasks/all"
+  if request.xhr?
+    204
+  else
+    redirect "/tasks/all"
+  end
 end
