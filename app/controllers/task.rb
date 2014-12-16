@@ -47,7 +47,12 @@ end
 put '/task/:id/toggle_complete', auth: :user do |id|
   task = Task.find(id)
   task.toggle_complete!
-  redirect ("/")
+
+  if request.xhr?
+    erb :'task/single', locals: {task: task}, layout: false
+  else
+    redirect ("/")
+  end
 end
 
 delete '/task/:id', auth: :user do |id|

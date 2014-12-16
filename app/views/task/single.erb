@@ -1,22 +1,26 @@
 <div class="task">
 
-  <p class="description <%= task.completed ? "strikethrough" : "" %>">
-    <span class="task_<%= task.priority %>"><%= task.priority %></span>.
-    <%= task.description %>
-  </p>
-  <p>
-    <%= task.display_tags %>
-  </p>
+  <div class="task_content">
+    <p class="description <%= task.completed ? "strikethrough" : "" %>">
+      <span class="task_<%= task.priority %>"><%= task.priority %></span>.
+      <%= task.description %>
+    </p>
+    <p>
+      <%= task.display_tags %>
+    </p>
+  </div>
 
-  <form action="/task/<%= task.id %>/toggle_complete" method="POST">
-    <input type="hidden" name="_method" value="PUT">
-    <input type="submit" value="<%= task.completed ? "Uncomplete" : "Complete" %>">
-  </form>
+  <div class="task_buttons">
+    <form action="/task/<%= task.id %>/toggle_complete" method="POST" class="toggle_form">
+      <input type="hidden" name="_method" value="PUT">
+      <input type="submit" value="<%= task.completed ? "Uncomplete" : "Complete" %>">
+    </form>
 
-  <form action="/task/<%= task.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-  </form>
+    <form action="/task/<%= task.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form>
+  </div>
 
   <ul class="subtasks">
   <% task.sub_tasks.each do |sub_task| %>
