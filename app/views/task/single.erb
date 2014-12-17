@@ -10,6 +10,10 @@
     </p>
   </div>
 
+  <div class="edit_wrapper">
+    <%= erb :'task/edit', locals: {task: task} %>
+  </div>
+
   <div class="task_buttons">
     <a href="/task/<%= task.id %>/edit" class="edit_link">Edit</a>
     <form action="/task/<%= task.id %>/toggle_complete" method="POST" class="toggle_form">

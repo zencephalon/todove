@@ -32,7 +32,7 @@ end
 
 get '/task/:id/edit', auth: :user do |id|
   @task = Task.find(id)
-  erb :'task/edit'
+  erb :'task/edit', locals: {task: @task}
 end
 
 put '/task/:id', auth: :user do |id|

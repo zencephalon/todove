@@ -30,6 +30,10 @@ del {text-decoration: line-through; color: #777777;}
  text-decoration: line-through;
 }
 
+.edit_wrapper {
+    display: none;
+}
+
 .task_5 {
     color: blue;
 }
