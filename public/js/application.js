@@ -33,6 +33,6 @@ $(document).ready(function() {
 
     var $target = $(event.target);
 
-    $target.closest('.task').children('.edit_wrapper').show();
+    $target.closest('.task').children('.edit_wrapper').toggle();
   });
 });
