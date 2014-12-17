@@ -1,0 +1,8 @@
+<select name="task[priority]">
+  <% (1..5).each do |i| %>
+    <option value="<%= i %>" <%= (i == task.priority) ? "selected" : "" %>><%= i %></option>
+  <% end %>
+</select>
+<input type="text" name="task[description]" value="<%= task.description %>">
+<input type="text" name="tags" value="<%= task.display_tags %>">
+<input type="submit">
