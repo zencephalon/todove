@@ -11,6 +11,7 @@
   </div>
 
   <div class="task_buttons">
+    <a href="/task/<%= task.id %>/edit" class="edit_link">Edit</a>
     <form action="/task/<%= task.id %>/toggle_complete" method="POST" class="toggle_form">
       <input type="hidden" name="_method" value="PUT">
       <input type="submit" value="<%= task.completed ? "Uncomplete" : "Complete" %>">

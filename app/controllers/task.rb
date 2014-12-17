@@ -41,7 +41,7 @@ put '/task/:id', auth: :user do |id|
 
   task.set_tags_from_str(params[:tags])
 
-  redirect ("/task/#{task.id}")
+  redirect ("/")
 end
 
 put '/task/:id/toggle_complete', auth: :user do |id|
