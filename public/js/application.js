@@ -10,6 +10,19 @@ $(document).ready(function() {
       $target.closest('.task').remove();
     });
   });
+  // Edit form
+  $('#content').on('submit', 'form.edit_form', function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
+    $.ajax({
+      url: $target.attr('action'),
+      type: 'PUT',
+      //data: {task: {description: $target.children('input[name=task\[description\]]').val(), priority: $target.children('select').val() }, tags: $target.children('input[name=tags]').val()}
+      data: $target.serialize()
+    }).done(function(response) {
+      $target.closest('.task').replaceWith(response);
+    })
+  })
   // Toggle
   $('#content').on('submit', 'form.toggle_form', function (event) {
 

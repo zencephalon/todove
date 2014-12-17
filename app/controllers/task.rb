@@ -41,7 +41,11 @@ put '/task/:id', auth: :user do |id|
 
   task.set_tags_from_str(params[:tags])
 
-  redirect ("/")
+  if request.xhr?
+    erb :'task/single', locals: {task: task}, layout: false
+  else
+    redirect ("/")
+  end
 end
 
 put '/task/:id/toggle_complete', auth: :user do |id|
